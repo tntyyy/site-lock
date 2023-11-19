@@ -1,9 +1,16 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
+import {useEffect} from "react";
+import {authControllerSignIn} from "@/shared/api/generated";
 
 const inter = Inter({ subsets: ['latin'] })
 
 export function HomePage() {
+
+  useEffect(() => {
+    authControllerSignIn({email: "test@gmail.com", password: "password123" }).then(console.log)
+  }, []);
+
   return (
     <main
       className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
